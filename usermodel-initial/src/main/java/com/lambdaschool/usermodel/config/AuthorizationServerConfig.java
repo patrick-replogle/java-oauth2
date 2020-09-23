@@ -37,7 +37,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     {
         clients.inMemory()
             .withClient(CLIENT_ID)
-                .secret(CLIENT_SECRET)
+                .secret(encoder.encode(CLIENT_SECRET))
                 .authorizedGrantTypes(GRANT_TYPE_PASSWORD, AUTHORIZATION_CODE)
                 .scopes(SCOPE_WRITE, SCOPE_READ, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS);
@@ -48,7 +48,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     {
         endpoints.tokenStore(tokenStore)
             .authenticationManager(authenticationManager);
-
         endpoints.pathMapping("/oauth/token", "/login");
     }
 }
