@@ -1,5 +1,7 @@
 package com.lambdaschool.usermodel;
 
+import org.hibernate.cfg.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -21,9 +23,14 @@ public class UserModelApplication
      *
      * @param args Not used in this application.
      */
+
     public static void main(String[] args)
     {
+
         SpringApplication.run(UserModelApplication.class,
                               args);
+        System.out.println(System.getenv("OAUTHCLIENTSECRET"));
+        System.out.println(System.getenv("OAUTHCLIENTID"));
+        System.out.println("hello");
     }
 }
